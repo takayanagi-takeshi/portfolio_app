@@ -1,0 +1,5 @@
+<template>
+  <div>
+    <p>test page</p>
+  </div>
+</template>
