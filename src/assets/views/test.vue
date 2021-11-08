@@ -1,5 +1,6 @@
 <template>
   <div>
-    <p>test page</p>
+    <router-link to="/">Home</router-link>
+    <p>閲覧ページ</p>
   </div>
 </template>

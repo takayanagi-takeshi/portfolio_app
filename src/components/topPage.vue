@@ -9,7 +9,7 @@
         <nav>
           <ul>
             <li>
-              <a href="#" class="heder_txet">閲覧</a>
+              <router-link to="/test" class="heder_txet">閲覧</router-link>
               <a href="#" class="heder_txet">シフト希望</a>
               <router-link to="/routing" class="heder_txet" >管理者(編集)</router-link>
             </li>
