@@ -7,8 +7,6 @@
 </template>
 
 <script>
-// import adminPage from '@/assets/views/adminPage.vue'
-// import topPage from './components/topPage.vue'
 
 export default {
   name: 'app',

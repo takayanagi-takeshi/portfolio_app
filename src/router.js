@@ -19,7 +19,7 @@ export default new Router({
     },
 
     {
-      path: '/routing',
+      path: '/admin',
       name: 'routing',
       component: AdminPage
     },
