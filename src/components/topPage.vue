@@ -3,7 +3,7 @@
   <div class="hello">
     <header>
       <div class="header-in">
-        <h1>シフト作成アプリ</h1>
+        <h1 class="">シフト作成アプリ</h1>
       </div>
       <div class="header-tag">
         <nav>
