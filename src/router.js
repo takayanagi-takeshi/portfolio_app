@@ -1,9 +1,8 @@
 import Vue from 'vue'
-import adminPage from './assets/views/adminPage.vue'
+import AdminPage from './assets/views/AdminPage.vue'
 import Router from 'vue-router'
-// import Routing from './views/Routing.vue'
-import topPage from './components/topPage.vue'
-import test from './assets/views/test.vue'
+import TopPage from './components/TopPage.vue'
+import Test from './assets/views/Test.vue'
 
 Vue.use(Router)
 
@@ -16,19 +15,19 @@ export default new Router({
     {
       path: '/',
       name: 'top',
-      component: topPage
+      component: TopPage
     },
 
     {
       path: '/routing',
       name: 'routing',
-      component: adminPage
+      component: AdminPage
     },
 
     {
       path: '/test',
       name: 'test',
-      component: test
+      component: Test
     }
 
   ]
