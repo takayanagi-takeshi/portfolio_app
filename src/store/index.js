@@ -20,13 +20,6 @@ export default new Vuex.Store({
       {name: 'Ken', email: 'ken@amazon.com',age:29}
       ],
     message: 'index.jsからのHello Hello',
-
-
-      weeks: ["日", "月", "火", "水", "木", "金", "土"],
-      todays: new Date(),
-      now_year: new Date().getFullYear(),
-      now_month: new Date().getMonth() + 1
-    
   }
   
 })
