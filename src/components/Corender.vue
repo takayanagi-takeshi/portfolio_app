@@ -5,14 +5,14 @@
   </ul>
   <div class="month">
     <button type="button" @click="monthMinus" class="border">⇦</button>
-    {{now_year}}年
-    {{now_month}}月
+    <div class="now_year">{{now_year}}年</div>
+    <div class="now_month">{{now_month}}月</div>
     <button type="button" @click="monthPlus">⇨</button>
   </div>
   <div class="calendar">
-    <div  class="c-week" v-for="week in weeks" :key="week">
+    <!-- <div  class="c-week" v-for="week in weeks" :key="week">
       {{week}}
-    </div>
+    </div> -->
   </div>
   <div class="calendar">
     <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
@@ -28,13 +28,17 @@ export default {
 
       data() {
     return {
-      weeks: ["日", "月", "火", "水", "木", "金", "土"],
+      // dayList: ["日", "月", "火", "水", "木", "金", "土"],
       todays: new Date(),
       now_year: new Date().getFullYear(),
-      now_month: new Date().getMonth()+1
+      now_month: new Date().getMonth()+1,
+      // weeks: new Date(),
     }
   },
   computed: {
+    // weeks() {
+    //   return this.dayList[this.now_month]
+    // },
     users: function() {
       return this.$store.state.users
     },
@@ -47,9 +51,9 @@ export default {
     getMonthFirstDayweek() {
       return new Date(this.getNen, this.getTsuki - 1, 1).getDay()
     },
-    getBeforeMonthLastDay() {
-      return new Date(this.getNen, this.getTsuki - 1, 0).getDate()
-    },
+    // getBeforeMonthLastDay() {
+    //   return new Date(this.getNen, this.getTsuki - 1, 0).getDate()
+    // },
     getMonthLastDay() {
       return new Date(this.getNen, this.getTsuki, 0).getDate()
     },
@@ -65,12 +69,34 @@ export default {
         result.push(i)
       }
       let j = 1
-      for(let i=result.length; i < 42; i++) {
+      for(let i=result.length; i < 31; i++) {
         result.push(j)
         j++
       }
       return result
-    }
+    },
+    // weekData() {
+    //   let resultWeek = []
+    //   if(this.getMonthFirstDayweek != 0) {
+    //   for (let a=this.getBeforeMonthLastDay-(this.getMonthFirstDayweek-1); a <= this.getBeforeMonthLastDay; a++) {
+    //     resultWeek.push(a)
+    //     }
+    //   }
+    //   for(let a = 1; a <= this.getMonthLastDay; a++) {
+    //     resultWeek.push(a)
+    //   }
+    //   let s = 1
+    //   for(let s=result.length; s < 31; s++) {
+    //     resultWeek.push(s)
+    //     s++
+    //   }
+    //   return resultWeek
+    // }
+
+  },
+  created() {
+      const date = new Date();
+      this.day = date.getDay();
   },
   methods: {
     monthPlus() {
@@ -88,8 +114,8 @@ export default {
       } else {
         this.now_month--
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -101,7 +127,7 @@ export default {
 
 .calendar {
   display: flex;
-  width: 95%;
+  width: 150%;
   flex-wrap: wrap;
   text-align: center;
   margin-left: auto;
@@ -114,6 +140,7 @@ export default {
   border: solid 1px;
   width: 26px;
   height: 25px;
+  white-space: nowrap;  
 }
 
 /* .c-week {
@@ -125,7 +152,20 @@ export default {
 } */
 
 .month {
+  display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 20px;
+  width: 200px;
+}
+
+.now_year {
+  margin-top: 5px;
+  width: 70px;
+}
+
+.now_month {
+  width: 60px;
+  font-size: 25px;
 }
 </style>
