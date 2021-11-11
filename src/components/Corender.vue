@@ -10,14 +10,14 @@
     <button type="button" @click="monthPlus">⇨</button>
   </div>
   <div class="calendar">
-    <!-- <div  class="c-week" v-for="week in weeks" :key="week">
-      {{week}}
-    </div> -->
-  </div>
-  <div class="calendar">
     <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
-      {{day}}
+      {{day.day}}
     </div>
+  </div>
+  <div class="calendar-week">
+    <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
+    {{ dayList[day.week] }}
+  </div>
   </div>
 </div>
 </template>
@@ -28,7 +28,7 @@ export default {
 
       data() {
     return {
-      // dayList: ["日", "月", "火", "水", "木", "金", "土"],
+      dayList: ["金", "土", "日", "月", "火", "水", "木"],
       todays: new Date(),
       now_year: new Date().getFullYear(),
       now_month: new Date().getMonth()+1,
@@ -36,9 +36,6 @@ export default {
     }
   },
   computed: {
-    // weeks() {
-    //   return this.dayList[this.now_month]
-    // },
     users: function() {
       return this.$store.state.users
     },
@@ -49,7 +46,7 @@ export default {
       return this.now_year
     },
     getMonthFirstDayweek() {
-      return new Date(this.getNen, this.getTsuki - 1, 1).getDay()
+      return new Date(this.getNen, this.getTsuki -1, 0).getDay()
     },
     // getBeforeMonthLastDay() {
     //   return new Date(this.getNen, this.getTsuki - 1, 0).getDate()
@@ -60,19 +57,23 @@ export default {
 
     calendarData() {
       let result = []
-      if(this.getMonthFirstDayweek != 0) {
-      for (let i=this.getBeforeMonthLastDay-(this.getMonthFirstDayweek-1); i <= this.getBeforeMonthLastDay; i++) {
-        result.push(i)
-        }
-      }
+      // if(this.getMonthFirstDayweek != 0) {
+      // for (let i=this.getBeforeMonthLastDay-(this.getMonthFirstDayweek-1); i <= this.getBeforeMonthLastDay; i++) {
+      //   result.push(i)
+      //   }
+      // }
       for(let i = 1; i <= this.getMonthLastDay; i++) {
-        result.push(i)
+        const w = new Date(this.now_year, this.now_month, i).getDay()
+        result.push({
+          day: i,
+          week: w
+        })
       }
-      let j = 1
-      for(let i=result.length; i < 31; i++) {
-        result.push(j)
-        j++
-      }
+      // let j = 1
+      // for(let i=result.length; i < 31; i++) {
+      //   result.push(j)
+      //   j++
+      // }
       return result
     },
     // weekData() {
@@ -127,11 +128,22 @@ export default {
 
 .calendar {
   display: flex;
-  width: 150%;
+  width: 300%;
   flex-wrap: wrap;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+
+}
+
+.calendar-week {
+  display: flex;
+  width: 300%;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .c-day {
