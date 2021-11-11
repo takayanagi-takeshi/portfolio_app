@@ -9,16 +9,44 @@
     <div class="now_month">{{now_month}}月</div>
     <button type="button" @click="monthPlus">⇨</button>
   </div>
-  <div class="calendar">
-    <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
-      {{day.day}}
+
+
+
+  <div class="calemdar">
+    <div class="calendar-day">
+      <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
+        {{day.day}}
+      </div>
+    </div>
+    <div class="calendar-week">
+      <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
+      {{ dayList[day.week] }}
+      </div>
     </div>
   </div>
-  <div class="calendar-week">
-    <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
-    {{ dayList[day.week] }}
+
+  <!-- <select v-model="selected">
+  <option disabled value="">名前を選択</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select> -->
+  <div class="name">
+    <select v-model="$store.state.multiSelect">
+      <option v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s">
+        {{s.label}}
+      </option>
+    </select>
   </div>
-  </div>
+      <!-- <div class="name1">
+        <select v-model="$store.state.multiSelect">
+      <option v-for="q in $store.state.multiSelectOptions" :value="q.value" :key="q">
+        {{q.label}}
+      </option> -->
+    <!-- </select> -->
+    <!-- </div> -->
+
+
 </div>
 </template>
 
@@ -28,13 +56,14 @@ export default {
 
       data() {
     return {
-      dayList: ["金", "土", "日", "月", "火", "水", "木"],
+      dayList: ["日", "月", "火", "水", "木", "金", "土"],
       todays: new Date(),
       now_year: new Date().getFullYear(),
       now_month: new Date().getMonth()+1,
       // weeks: new Date(),
-    }
-  },
+
+      }
+    },
   computed: {
     users: function() {
       return this.$store.state.users
@@ -63,7 +92,7 @@ export default {
       //   }
       // }
       for(let i = 1; i <= this.getMonthLastDay; i++) {
-        const w = new Date(this.now_year, this.now_month, i).getDay()
+        const w = new Date(this.now_year, this.now_month-1, i).getDay()
         result.push({
           day: i,
           week: w
@@ -76,23 +105,6 @@ export default {
       // }
       return result
     },
-    // weekData() {
-    //   let resultWeek = []
-    //   if(this.getMonthFirstDayweek != 0) {
-    //   for (let a=this.getBeforeMonthLastDay-(this.getMonthFirstDayweek-1); a <= this.getBeforeMonthLastDay; a++) {
-    //     resultWeek.push(a)
-    //     }
-    //   }
-    //   for(let a = 1; a <= this.getMonthLastDay; a++) {
-    //     resultWeek.push(a)
-    //   }
-    //   let s = 1
-    //   for(let s=result.length; s < 31; s++) {
-    //     resultWeek.push(s)
-    //     s++
-    //   }
-    //   return resultWeek
-    // }
 
   },
   created() {
@@ -116,6 +128,7 @@ export default {
         this.now_month--
       }
     },
+
   },
 }
 </script>
@@ -126,7 +139,12 @@ export default {
   padding: 0;
 }
 
-.calendar {
+.calemdar {
+  margin-left: 90px;
+  position: absolute;
+}
+
+.calendar-day {
   display: flex;
   width: 300%;
   flex-wrap: wrap;
@@ -179,5 +197,21 @@ export default {
 .now_month {
   width: 60px;
   font-size: 25px;
+}
+
+.name {
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  /* border: solid 1px; */
+  width: 89px;
+}
+
+.name1 {
+  margin-top: 29px;
+  display: flex;
+  justify-content: center;
+  /* border: solid 1px; */
+  width: 89px;
 }
 </style>

@@ -19,7 +19,15 @@ export default new Vuex.Store({
       {name: 'Merry', email: 'merry@facebook.com',age:33},
       {name: 'Ken', email: 'ken@amazon.com',age:29}
       ],
-    message: 'index.jsからのHello Hello',
+
+    multiSelect: 'select1',
+    multiSelectOptions: [
+      { label: 'セレクト1', value: 'select1' },
+      { label: 'セレクト2', value: 'select2' },
+      { label: 'セレクト3', value: 'select3' },
+      { label: 'セレクト4', value: 'select4' },
+      { label: 'セレクト5', value: 'select5' }
+    ]
   }
   
 })
