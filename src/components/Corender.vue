@@ -171,7 +171,7 @@ export default {
       this.nameSelectboxList.splice()
     },
     removeBox() {
-      this.nameSelectboxList.splice(this.nameSelectboxList, 1)
+      this.nameSelectboxList.pop(this.nameSelectboxList, 1)
     }
     // ------------------------追加・削除ボタン---------------------------
   },
@@ -191,7 +191,7 @@ export default {
 
 .calendar-day {
   display: flex;
-  width: 300%;
+  width: 400%;
   flex-wrap: wrap;
   text-align: center;
   margin-left: auto;
@@ -201,7 +201,7 @@ export default {
 
 .calendar-week {
   display: flex;
-  width: 300%;
+  width: 400%;
   flex-wrap: wrap;
   text-align: center;
   margin-left: auto;
