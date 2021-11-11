@@ -3,15 +3,18 @@
   <ul>
     <li v-for="user in users"  v-bind:key="user.name">{{ user.name }} ({{ user.email }})</li>
   </ul>
+  <!--------------------------------------- カレンダー機能 -------------------------------->
+
+  <!--- 年・月を選択 ---->
   <div class="month">
     <button type="button" @click="monthMinus" class="border">⇦</button>
     <div class="now_year">{{now_year}}年</div>
     <div class="now_month">{{now_month}}月</div>
     <button type="button" @click="monthPlus">⇨</button>
   </div>
+<!-- --------------- -->
 
-
-
+<!-- --日と曜日を表示 -->
   <div class="calemdar">
     <div class="calendar-day">
       <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
@@ -24,13 +27,16 @@
       </div>
     </div>
   </div>
-
+<!-- --------------- -->
+<!--------------------------------------- カレンダー機能 -------------------------------->
   <!-- <select v-model="selected">
   <option disabled value="">名前を選択</option>
   <option>A</option>
   <option>B</option>
   <option>C</option>
 </select> -->
+
+<!-- ----------------------------セレクトボックス表示 --------------------------->
 <div class="selectbox" v-for="box in nameSelectboxList" :key="box.id">
   <div class="name">
     <select class="selectbox" v-model="box.selected">
@@ -49,7 +55,7 @@
       </option>
     </select>
   </div> -->
-
+<!-- ----------------------------セレクトボックス表示 --------------------------->
 
 </div>
 </template>
@@ -87,12 +93,13 @@ export default {
     },
   computed: {
 
-    // ----users---データをvuexで取り出し
+    // ----usersデータをvuexで取り出し---
     users: function() {
       return this.$store.state.users
     },
-    // ーーーーーーーーーーーーーーーーーーー
+    // ----usersデータをvuexで取り出し---
 
+    // -----------------------------年・月・曜日を取得-------------------------------
     getTsuki() {
       return this.now_month
     },
@@ -130,13 +137,16 @@ export default {
       // }
       return result
     },
-
+    // --------------------------年・月・曜日を取得------------------------------------
   },
+
   created() {
       const date = new Date();
       this.day = date.getDay();
   },
+
   methods: {
+    // ------------------------年・月を１ヶ月毎に切り替える---------------------------
     monthPlus() {
       if(this.now_month == 12) {
         this.now_month = 1
@@ -153,26 +163,17 @@ export default {
         this.now_month--
       }
     },
+    // ------------------------年・月を１ヶ月毎に切り替える---------------------------
 
+    // ------------------------追加・削除ボタン---------------------------
     addBox() {
       this.nameSelectboxList.push({ id: this.nameSelectboxList.length })
       this.nameSelectboxList.splice()
     },
     removeBox() {
-      // let nameSelectboxList = this.nameSelectboxList.filter((input) => { return input.id !== id })
-      // let newNameSelectboxList = []
-      // for (let i = 0; i < nameSelectboxList.length; i++) {
-      //   newNameSelectboxList.push({
-      //     id: i,
-      //     selected: nameSelectboxList[i].selected
-      //   })
-      //   console.log(i)
-      // }
-      // this.nameSelectboxList = newNameSelectboxList
-      // this.nameSelectboxList.splice()
-            // this.nameSelectboxList.push({ id: this.nameSelectboxList.length })
       this.nameSelectboxList.splice(this.nameSelectboxList, 1)
     }
+    // ------------------------追加・削除ボタン---------------------------
   },
 }
 </script>
@@ -195,7 +196,7 @@ export default {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-
+  white-space: nowrap;  
 }
 
 .calendar-week {
@@ -212,7 +213,7 @@ export default {
   display: flex;
   justify-content: center;
   border: solid 1px;
-  width: 26px;
+  width: 30px;
   height: 25px;
   white-space: nowrap;  
 }
