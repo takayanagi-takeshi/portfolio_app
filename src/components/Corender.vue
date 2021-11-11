@@ -31,10 +31,10 @@
   <option>B</option>
   <option>C</option>
 </select> -->
-<div v-for="box in nameSelectboxList" :key="box.id">
+<div v-for="box in nameSelectboxList" :key="box.box_id">
   <div class="name">
     <select v-model="box.selected">
-      <option v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s">
+      <option v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s.id">
         {{s.label}}
       </option>
     </select>
