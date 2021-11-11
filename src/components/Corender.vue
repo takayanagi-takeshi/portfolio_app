@@ -31,17 +31,17 @@
   <option>B</option>
   <option>C</option>
 </select> -->
-<div v-for="box in nameSelectboxList" :key="box.box_id">
+<div class="selectbox" v-for="box in nameSelectboxList" :key="box.id">
   <div class="name">
-    <select v-model="box.selected">
-      <option v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s.id">
+    <select class="selectbox" v-model="box.selected">
+      <option class="selectbox" v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s.id">
         {{s.label}}
       </option>
     </select>
   </div>
 </div>
-<button type="button" @click="addBox">追加</button>
-<button type="button" @click="removeBox">削除</button>
+<button class="editbox" type="button" @click="addBox">追加</button>
+<button class="editbox" type="button" @click="removeBox">削除</button>
       <!-- <div class="name1">
         <select v-model="$store.state.multiSelect">
       <option v-for="q in $store.state.multiSelectOptions" :value="q.value" :key="q">
@@ -185,7 +185,7 @@ export default {
 
 .calemdar {
   margin-left: 90px;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .calendar-day {
@@ -244,8 +244,9 @@ export default {
 }
 
 .name {
-  margin-top: 90px;
-  display: flex;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  /* display: flex; */
   justify-content: center;
   /* border: solid 1px; */
   width: 89px;
@@ -257,5 +258,13 @@ export default {
   justify-content: center;
   /* border: solid 1px; */
   width: 89px;
+}
+
+.selectbox {
+  height: 30px;
+}
+
+.editbox {
+  margin-top: 3px;
 }
 </style>
