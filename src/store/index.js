@@ -26,7 +26,8 @@ export default new Vuex.Store({
       { label: 'セレクト2', value: 'select2' },
       { label: 'セレクト3', value: 'select3' },
       { label: 'セレクト4', value: 'select4' },
-      { label: 'セレクト5', value: 'select5' }
+      { label: 'セレクト5', value: 'select5' },
+      { label: '', value: '' }
     ]
   }
   

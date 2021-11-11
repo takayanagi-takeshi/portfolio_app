@@ -6,21 +6,21 @@
 
 
   <div class="hello">
-    <h2>Essential Links</h2>
-    <div xs6 class="ma-auto">
+    <h2>ボタンテスト</h2>
+    <div class="ma-auto">
       
       <div row v-for="input in inputList" :key="input.id">
         <div>
           <!-- <div v-model="input.text" ></div>
                   <div> -->
-          <button fab dark small color="red" @click="removeInput(input.id)">
-              <div dark>remove</div>
+          <button  @click="removeInput(input.id)">
+              <div >remove</div>
           </button>
                   </div>
       </div>
               <div>
-      <div fab dark small color="blue" @click="addInput()">
-          <button dark>add</button>
+      <div  @click="addInput()">
+          <button>add</button>
       </div>
               </div>
     </div>

@@ -31,20 +31,24 @@
   <option>B</option>
   <option>C</option>
 </select> -->
+<div v-for="box in nameSelectboxList" :key="box.id">
   <div class="name">
-    <select v-model="$store.state.multiSelect">
+    <select v-model="box.selected">
       <option v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s">
         {{s.label}}
       </option>
     </select>
   </div>
+</div>
+<button type="button" @click="addBox">追加</button>
+<button type="button" @click="removeBox">削除</button>
       <!-- <div class="name1">
         <select v-model="$store.state.multiSelect">
       <option v-for="q in $store.state.multiSelectOptions" :value="q.value" :key="q">
         {{q.label}}
-      </option> -->
-    <!-- </select> -->
-    <!-- </div> -->
+      </option>
+    </select>
+  </div> -->
 
 
 </div>
@@ -62,12 +66,33 @@ export default {
       now_month: new Date().getMonth()+1,
       // weeks: new Date(),
 
+      nameSelectboxList: [
+        {
+          id: 0,
+          selected: ''
+        },
+        {
+          id: 1,
+          selected: ''
+
+        },
+        {
+          id: 2,
+          selected: ''
+
+        }
+      ]
+
       }
     },
   computed: {
+
+    // ----users---データをvuexで取り出し
     users: function() {
       return this.$store.state.users
     },
+    // ーーーーーーーーーーーーーーーーーーー
+
     getTsuki() {
       return this.now_month
     },
@@ -92,7 +117,7 @@ export default {
       //   }
       // }
       for(let i = 1; i <= this.getMonthLastDay; i++) {
-        const w = new Date(this.now_year, this.now_month-1, i).getDay()
+        const w = new Date(this.now_year, this.now_month - 1, i).getDay()
         result.push({
           day: i,
           week: w
@@ -129,6 +154,25 @@ export default {
       }
     },
 
+    addBox() {
+      this.nameSelectboxList.push({ id: this.nameSelectboxList.length })
+      this.nameSelectboxList.splice()
+    },
+    removeBox() {
+      // let nameSelectboxList = this.nameSelectboxList.filter((input) => { return input.id !== id })
+      // let newNameSelectboxList = []
+      // for (let i = 0; i < nameSelectboxList.length; i++) {
+      //   newNameSelectboxList.push({
+      //     id: i,
+      //     selected: nameSelectboxList[i].selected
+      //   })
+      //   console.log(i)
+      // }
+      // this.nameSelectboxList = newNameSelectboxList
+      // this.nameSelectboxList.splice()
+            // this.nameSelectboxList.push({ id: this.nameSelectboxList.length })
+      this.nameSelectboxList.splice(this.nameSelectboxList, 1)
+    }
   },
 }
 </script>

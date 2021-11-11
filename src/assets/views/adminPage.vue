@@ -17,12 +17,6 @@ import Corender from '@/components/Corender.vue'
 export default {
 
   name: '',
-  // data: function() {
-  //   return {
-
-  //     message: 'hehehehehehe'
-  //     }
-  //   },
     components: { 
     Corender
     },
