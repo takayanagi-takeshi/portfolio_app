@@ -6,7 +6,7 @@
 
 
     <div>
-    <h1 v-for="item in items" :key="item">大阪府の{{item}}</h1>
+    <h1 v-for="(item,key) in items" :key="key">大阪府の{{item}}</h1>
       </div>
           </div>
 </template>

@@ -45,8 +45,8 @@ export default new Vuex.Store({
   items: [],
   },
   mutations: {
-    setCovidData(state, items) {
-      state.items = items
+    setCovidData(state, data) {
+      state.items = data
     }
   },
   actions: {
