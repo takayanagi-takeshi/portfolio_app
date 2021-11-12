@@ -5,58 +5,42 @@
     <button class="btn">click</button>
 
 
-  <div class="hello">
-    <h2>ボタンテスト</h2>
-    <div class="ma-auto">
-      
-      <div row v-for="input in inputList" :key="input.id">
-        <div>
-          <!-- <div v-model="input.text" ></div>
-                  <div> -->
-          <button  @click="removeInput(input.id)">
-              <div >remove</div>
-          </button>
-                  </div>
+    <div>
+    <h1 v-if="items[0]">大阪府の{{items[0].datetime}}<h1>
       </div>
-              <div>
-      <div  @click="addInput()">
-          <button>add</button>
-      </div>
-              </div>
-    </div>
-  </div>
-    </div>
+          </div>
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
-  name: 'HelloWorld',
-  data () {
+  data()  {
     return {
-      inputList: [{id: 0, text: ''}]
-    }
-  },
-  methods: {
-    addInput () {
-      let inputList = this.inputList
-      inputList.push({
-        id: inputList.length,
-        text: ''
-      })
-    },
-    removeInput (id) {
-      let inputList = this.inputList
-      inputList = inputList.filter((input) => { return input.id !== id })
-      let newInputList = []
-      for (let i = 0; i < inputList.length; i++) {
-        newInputList.push({
-          id: i,
-          text: inputList[i].text
-        })
-        console.log(i)
-      }
-      this.inputList = newInputList
-    }
+    // items: [],
   }
+  },
+
+    created(){
+      // axios.get(
+      //   "/api/v1/datetime.json"
+      // )
+      // .then(response => {
+      //   // console.log(response);
+      //   // commit('setCovidData',response.data.itemList)
+      //   this.items = response.data.itemList
+      // })
+    },
+      computed: {
+    items() {
+      return this.$store.state.items
+    },
+    count() {
+      return this.$store.state.count
+    },
+    mounted() {
+      this.$store.dispatch('getCovidData');
+    },
+  },
+
 }
 </script>

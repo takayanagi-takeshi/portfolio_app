@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-Vue.use(Vuex);
+
+Vue.use(Vuex, VueAxios, axios);
 
 // const store = new Vuex.Store({
 //   state: {
@@ -29,7 +32,31 @@ export default new Vuex.Store({
       { label: 'セレクト5', value: 'select5' },
       { label: '', value: '' }
     ]
+  },
+  // actions: {//非同期処理はactionに書く
+  //   getCovidData: function() { //{commit}
+  //     return axios.get("/calendar/api/v3/reference#Channels")
+  //     .then(response => {
+  //       console.log(response);
+  //       // commit('setCovidData',response.data.itemList)
+  //     })
+  //   }
+  // },
+  items: [],
+  mutations: {
+    satCovidData(state, items) {
+      state.items = items
+    }
+  },
+  actions: {
+    getCovidData: function({commit}) {
+      return axios.get('/api/v1/datetime.json')
+      .then(response => {
+        commit('satCovidData',response.data.datetime)
+      })
+    }
   }
+
   
 })
 // export default store
