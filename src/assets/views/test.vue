@@ -6,7 +6,7 @@
 
 
     <div>
-    <h1 v-if="items[0]">大阪府の{{items[0].datetime}}<h1>
+    <h1 v-for="item in items" :key="item">大阪府の{{item}}</h1>
       </div>
           </div>
 </template>
@@ -37,10 +37,11 @@ export default {
     count() {
       return this.$store.state.count
     },
+      },
     mounted() {
       this.$store.dispatch('getCovidData');
     },
-  },
+  
 
 }
 </script>

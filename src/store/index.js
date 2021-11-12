@@ -31,8 +31,8 @@ export default new Vuex.Store({
       { label: 'セレクト4', value: 'select4' },
       { label: 'セレクト5', value: 'select5' },
       { label: '', value: '' }
-    ]
-  },
+    ],
+
   // actions: {//非同期処理はactionに書く
   //   getCovidData: function() { //{commit}
   //     return axios.get("/calendar/api/v3/reference#Channels")
@@ -43,8 +43,9 @@ export default new Vuex.Store({
   //   }
   // },
   items: [],
+  },
   mutations: {
-    satCovidData(state, items) {
+    setCovidData(state, items) {
       state.items = items
     }
   },
@@ -52,7 +53,7 @@ export default new Vuex.Store({
     getCovidData: function({commit}) {
       return axios.get('/api/v1/datetime.json')
       .then(response => {
-        commit('satCovidData',response.data.datetime)
+        commit('setCovidData',response.data)
       })
     }
   }
