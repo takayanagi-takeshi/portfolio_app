@@ -2,7 +2,7 @@ import Vue from 'vue'
 import AdminPage from './assets/views/AdminPage.vue'
 import Router from 'vue-router'
 import TopPage from './components/TopPage.vue'
-import Test from './assets/views/Test.vue'
+import ApiData from './assets/views/ApiData.vue'
 import DemoTest from './components/DemoTest.vue'
 
 Vue.use(Router)
@@ -26,9 +26,9 @@ export default new Router({
     },
 
     {
-      path: '/test',
-      name: 'test',
-      component: Test
+      path: '/apidata',
+      name: 'apidata',
+      component: ApiData
     },
 
     {

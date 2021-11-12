@@ -15,7 +15,7 @@
 <!-- --------------- -->
 
 <!-- --日と曜日を表示 -->
-  <div class="calemdar">
+  <div class="calendar">
     <div class="calendar-day">
       <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
         {{day.day}}
@@ -26,6 +26,11 @@
       {{ dayList[day.week] }}
       </div>
     </div>
+        <!-- <div class="calendar-week">
+      <option  class="c-day" v-for="(day, index) in calendarData" :key="index">
+      {{ dayList[day.shiftday] }}
+      </option>
+    </div> -->
   </div>
 <!-- --------------- -->
 <!--------------------------------------- カレンダー機能 -------------------------------->
@@ -56,7 +61,18 @@
     </select>
   </div> -->
 <!-- ----------------------------セレクトボックス表示 --------------------------->
-
+<!-- ----------------------------シフトタイム設定表示 --------------------------->
+<div>
+<select v-model="selectedFruits">
+  <option disabled value="">果物一覧</option>
+  <option v-for="fruit in optionFruits" 
+    v-bind:value="fruit.name" 
+    v-bind:key="fruit.id">
+    {{ fruit.name }}
+  </option>
+</select>
+</div>
+<!-- ----------------------------シフトタイム設定表示 --------------------------->
 </div>
 </template>
 
@@ -87,10 +103,16 @@ export default {
           selected: ''
 
         }
-      ]
+      ],
+      selectedFruits: '', 
+      optionFruits: [ 
+          { id: 1, name: 'りんご' }, 
+          { id: 2, name: 'みかん' }, 
+          { id: 3, name: 'ぶどう' } 
+      ], 
 
-      }
-    },
+    }
+  },
   computed: {
 
     // ----usersデータをvuexで取り出し---
@@ -127,7 +149,8 @@ export default {
         const w = new Date(this.now_year, this.now_month - 1, i).getDay()
         result.push({
           day: i,
-          week: w
+          week: w,
+          shifttime:''
         })
       }
       // let j = 1
@@ -175,6 +198,7 @@ export default {
     }
     // ------------------------追加・削除ボタン---------------------------
   },
+
 }
 </script>
 
@@ -184,7 +208,7 @@ export default {
   padding: 0;
 }
 
-.calemdar {
+.calendar {
   margin-left: 90px;
   /* position: absolute; */
 }
