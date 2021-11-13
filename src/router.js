@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import AdminPage from './assets/views/AdminPage.vue'
 import Router from 'vue-router'
-import TopPage from './components/TopPage.vue'
-import ApiData from './assets/views/ApiData.vue'
+import TopPage from './assets/views/TopPage.vue'
+import ApiData from './components/ApiData.vue'
 import DemoTest from './components/DemoTest.vue'
 
 Vue.use(Router)

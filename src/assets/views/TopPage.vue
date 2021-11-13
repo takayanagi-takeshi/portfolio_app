@@ -121,7 +121,7 @@ body {
 .container {
   width: 100vw;
   height: 100vh;
-  background: url('../assets/subject/4883106_l.jpg');
+  background: url('../subject/4883106_l.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
