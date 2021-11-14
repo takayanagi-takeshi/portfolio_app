@@ -32,6 +32,11 @@
   <div class="main">
     <a href="#">ログイン</a>
     <a href="#">新規登録</a>
+    <div class="links">
+      <a
+    @click="signIn"
+    class="button--green">signIn</a>
+</div>
   </div>
 
   <ul>
@@ -47,11 +52,12 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'topPage',
   props: {
     msg: String,
-
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   let Timer = function (saleStartTime, saleEndTime, endMessage, outputDestination) {
@@ -99,9 +105,13 @@ export default {
 //   let myTimer = new Timer('2021/1/11 00:00:00', '2021/11/31 23:59:59', '終了！', 'timer');
 //   myTimer.countDown();
 // }, false)
-
-  
-}
+},
+methods: {
+    signIn: function () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
+  },
 }
 
 
