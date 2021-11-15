@@ -13,6 +13,7 @@
               <router-link to="/apidata" class="heder_txet">API閲覧</router-link>
               <a href="#" class="heder_txet">シフト希望</a>
               <router-link to="/admin" class="heder_txet" >管理者(編集)</router-link>
+              <a @click="signout">ログアウト</a>
             </li>
           </ul>
         </nav>
@@ -25,18 +26,13 @@
     </div>
   <div class="text-input">
     <div class="login-title1">ID:</div>
-    <input class="text1" type="text">
+    <input v-model="emailAddress" placeholder="ログインID" class="text1" >
     <div class="login-title2">PASS:</div>
-    <input class="text2" type="text">
+    <!-- <input v-model="pass" placeholder="パスワード" class="text2" > -->
   </div>
   <div class="main">
-    <a href="#">ログイン</a>
-    <a href="#">新規登録</a>
-    <div class="links">
-      <a
-    @click="signIn"
-    class="button--green">signIn</a>
-</div>
+    <a @click="SignIn">ログイン</a>
+    <a @click="SignInGoogle">新規登録</a>
   </div>
 
   <ul>
@@ -52,12 +48,63 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut ,signInWithEmailAndPassword} from 'firebase/auth'
+// import 'firebase/compat/auth';
+// import 'firebase/compat/firestore';
+// import "firebase/auth"
 
 export default {
   name: 'topPage',
   props: {
     msg: String,
+  },
+  data () {
+    return {
+      // emailAddress: 'test@example.com',
+      // password: 'Password',
+    emailAddress: '',
+
+
+    }
+  },
+  methods: {
+      SignInGoogle () {
+        const provider = new GoogleAuthProvider()
+        const auth = getAuth()
+        signInWithPopup(auth, provider)
+          .then(() => {
+            this.$router.push({ path: "/admin" })
+          }).catch((error) => {
+            console.error(error)
+          })
+      },
+      SignIn () {
+      try {
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, this.emailAddress, this.password)
+          .then(() => {
+            console.log('ログイン成功')
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+      } catch (e) {
+        console.error(e)
+      }
+    },
+      signout () {
+      const auth = getAuth()
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        alert('サインアウトしました。')
+      }).catch((error) => {
+        // An error happened.
+        console.error(error)
+      })
+    },
+  },
+
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   let Timer = function (saleStartTime, saleEndTime, endMessage, outputDestination) {
@@ -105,16 +152,8 @@ export default {
 //   let myTimer = new Timer('2021/1/11 00:00:00', '2021/11/31 23:59:59', '終了！', 'timer');
 //   myTimer.countDown();
 // }, false)
-},
-methods: {
-    signIn: function () {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithRedirect(provider)
-    },
-  },
+
 }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
