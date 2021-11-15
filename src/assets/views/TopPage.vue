@@ -31,8 +31,8 @@
     <!-- <input v-model="pass" placeholder="パスワード" class="text2" > -->
   </div>
   <div class="main">
-    <a @click="SignIn">ログイン</a>
-    <a @click="SignInGoogle">新規登録</a>
+    <button @click="SignIn">ログイン</button>
+    <button @click="SignInGoogle">新規登録</button>
   </div>
 
   <ul>
