@@ -13,6 +13,7 @@
     "firebase": "^9.4.1",
     "vue": "^2.6.11",
     "vue-axios": "^3.4.0",
+    "vue-good-table": "^2.21.11",
     "vue-router": "3.0.7",
     "vuex": "^3.6.2"
   },

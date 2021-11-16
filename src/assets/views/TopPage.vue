@@ -28,7 +28,7 @@
     <div class="login-title1">ID:</div>
     <input v-model="emailAddress" placeholder="ログインID" class="text1" >
     <div class="login-title2">PASS:</div>
-    <!-- <input v-model="pass" placeholder="パスワード" class="text2" > -->
+    <input v-model="password" placeholder="パスワード" class="text2" >
   </div>
   <div class="main">
     <a @click="SignIn">ログイン</a>
