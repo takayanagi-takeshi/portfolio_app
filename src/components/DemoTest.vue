@@ -6,6 +6,7 @@
   <table>
   <tbody>
     <tr>
+      <th></th>
       <th v-for="(day, index) in day"
             v-bind:key="index">
           {{day.id}}
@@ -17,25 +18,28 @@
         <input type="text" name="" placeholder="ー" v-model="content.text">
       </td> -->
       
-                      <!-- <div class="day" v-for="id in day" :key="id"> -->
+
+                      <!-- <th class="day" v-for="id in day" :key="id"> -->
     <div class="time">
-      <td>
+      <div>
         <select class="box" v-model="content.select">
           <option v-for="option in oneday.countOptions" v-bind:value="option.value" :key="option.id">
-            <th>{{option.text}}</th>
+            {{option.text}}
           </option>
         </select>
-      </td>
+      </div>
       
-      <td>
+      <div>
         <select class="box" v-model="content.select1">
           <option v-for="option1 in oneday.countOptions1" v-bind:value="option1.value" :key="option1.id">
-            <th>{{option1.text}}</th>
+            {{option1.text}}
           </option>
         </select>
-      </td>
+      </div>
+    <!-- </div> -->
     </div>
     <!-- </div> -->
+    <!-- </th> -->
   </tr>
   </tbody>
   </table>
@@ -71,7 +75,6 @@ export default {
       // { tag_id: '4', tag_name: 'えええ', text: '', select: '',select1: ''}
     ],
     day: [
-      {id:''},
       {id:'1'},
       {id:'2'},
       {id:'3'},
