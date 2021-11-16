@@ -288,24 +288,9 @@ export default {
 
 .selectbox {
   height: 30px;
-    position: sticky;
-  left: 0;
-    /* &:before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc;
-  } */
-
-
 }
 
 .editbox {
   margin-top: 3px;
 }
-
-
 </style>
