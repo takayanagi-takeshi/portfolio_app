@@ -13,7 +13,6 @@
               <router-link to="/apidata" class="heder_txet">API閲覧</router-link>
               <a href="#" class="heder_txet">シフト希望</a>
               <router-link to="/admin" class="heder_txet" >管理者(編集)</router-link>
-              <a @click="signout">ログアウト</a>
             </li>
           </ul>
         </nav>
@@ -31,8 +30,11 @@
     <input v-model="password" placeholder="パスワード" class="text2" >
   </div>
   <div class="main">
-    <a @click="SignIn">ログイン</a>
-    <a @click="SignInGoogle">新規登録</a>
+    <!-- <a @click="SignIn">ログイン</a> -->
+    <!-- <a @click="SignUp">新規登録</a> -->
+
+    <button @click="SignInGoogle">Googleログイン</button>
+    <button @click="signout">ログアウト</button>
   </div>
 
   <ul>
@@ -48,7 +50,8 @@
 </template>
 
 <script>
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut ,signInWithEmailAndPassword} from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+// import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, signOut ,signInWithEmailAndPassword} from 'firebase/auth'
 // import 'firebase/compat/auth';
 // import 'firebase/compat/firestore';
 // import "firebase/auth"
@@ -60,47 +63,62 @@ export default {
   },
   data () {
     return {
-      // emailAddress: 'test@example.com',
-      // password: 'Password',
-    emailAddress: '',
+      emailAddress: 'test@example.com',
+      password: 'Password',
+    // emailAddress: '',
 
 
     }
   },
   methods: {
+    // SignUp () {
+    //   const auth = getAuth()
+    //   createUserWithEmailAndPassword(auth, this.emailAddress, this.password)
+    //     .then(() => {
+    //       console.log('user created')
+    //     })
+    //     .catch((error) => {
+    //       alert(error.message)
+    //       console.error(error)
+    //     })
+    // },
       SignInGoogle () {
         const provider = new GoogleAuthProvider()
         const auth = getAuth()
         signInWithPopup(auth, provider)
           .then(() => {
             this.$router.push({ path: "/admin" })
+            console.log('ログイン成功')
           }).catch((error) => {
             console.error(error)
           })
       },
-      SignIn () {
-      try {
-        const auth = getAuth();
-
-        signInWithEmailAndPassword(auth, this.emailAddress, this.password)
-          .then(() => {
-            console.log('ログイン成功')
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-      } catch (e) {
-        console.error(e)
-      }
-    },
+    //   SignIn () {
+    //   try {
+    //     const auth = getAuth();
+    //     // users = $store.state.users
+    //     signInWithEmailAndPassword(auth, this.emailAddress, this.password)
+    //       .then(() => {
+    //         console.log('ログイン成功')
+    //         this.$router.push({ path: "/admin" })
+    //       })
+    //       .catch((error) => {
+    //         console.error(error)
+    //       })
+    //   } catch (e) {
+    //     console.error(e)
+    //   }
+    // },
       signout () {
       const auth = getAuth()
       signOut(auth).then(() => {
         // Sign-out successful.
         alert('サインアウトしました。')
+        console.log('サインアウト成功')
       }).catch((error) => {
         // An error happened.
         console.error(error)
+        console.log('サインアウト失敗')
       })
     },
   },
@@ -257,6 +275,19 @@ top: 360px;
     width: 50%;
   }
     
+  .button {
+    width: 40px;
+  }
+}
+
+button {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 15px;
+  padding: 5px;
+  background-color: rgba(100, 132, 237, 0.548);
+  font-size: 20px;
+  border-radius: 100px;
 }
 
 .main {
