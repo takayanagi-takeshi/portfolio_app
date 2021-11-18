@@ -141,7 +141,7 @@ export default {
           name: '創造さん',
           shift: [
             {
-              date: '2021-11-1',
+              date: '2021-11-4',
               start_time: 12,
               end_time: 20
             },
@@ -295,7 +295,8 @@ export default {
     },
     // ------------------------↑↑追加・削除ボタン---------------------------
 
-        // ------------------------↓↓userデータ取得---------------------------
+
+        // --↓↓shiftデータの日付とカレンダーの日付を照合しあったものを取得----------------
     requestUserData(id) {
       return this.sample.filter(data => data.id === id)
     },
@@ -303,7 +304,7 @@ export default {
       const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
       return shift.filter(data => data.date === d)
     }
-        // ------------------------↑↑userデータ取得---------------------------
+        // --↑↑shiftデータの日付とカレンダーの日付を照合しあったものを取得-----------
   },
 
 }
