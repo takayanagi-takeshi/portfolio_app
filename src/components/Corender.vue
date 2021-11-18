@@ -19,11 +19,11 @@
     <div class="calendar-day"> -->
       <!-- <table> -->
         <div class="a">
-      <div  class="" v-for="(day, index) in calendarData" :key="index">
+      <div  class="time-data" v-for="(day, index) in calendarData" :key="index">
 
         
         {{day.day}}
-
+<br>
         {{ dayList[day.week] }}
             
 
@@ -356,6 +356,11 @@ export default {
 
 }
 
+.time-data {
+  font-size: 20px;
+  margin: auto;
+  background-color: aquamarine;
+}
 /* .c-week {
   font-size: 30px;
   width: 13.8%;
