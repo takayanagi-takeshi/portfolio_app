@@ -3,7 +3,7 @@
     <router-link to="/">Home</router-link>
     <p class="text-green-600 text-center">テストてすとページ</p>
 
-  <table>
+  <!-- <table>
   <tbody>
     <tr>
       <th></th>
@@ -13,14 +13,14 @@
         </th>
     </tr>
     <tr v-for="(content, index) in table" id="box" :key="index.id">
-      <td class="name">{{content.tag_name}}</td>
+      <td class="name">{{content.tag_name}}</td> -->
       <!-- <td>
         <input type="text" name="" placeholder="ー" v-model="content.text">
       </td> -->
       
 
                       <!-- <th class="day" v-for="id in day" :key="id"> -->
-    <div class="time">
+    <!-- <div class="time">
       <div>
         <select class="box" v-model="content.select">
           <option v-for="option in oneday.countOptions" v-bind:value="option.value" :key="option.id">
@@ -35,14 +35,17 @@
             {{option1.text}}
           </option>
         </select>
-      </div>
+      </div> -->
     <!-- </div> -->
-    </div>
+    <!-- </div> -->
     <!-- </div> -->
     <!-- </th> -->
-  </tr>
+  <!-- </tr>
   </tbody>
-  </table>
+  </table> -->
+
+  
+
   </div>
   
 </template>
@@ -68,11 +71,30 @@ export default {
         { text: '20', value: '20' }
       ],
     },
+    sample: [
+      {
+        id: 1,
+        name: '創造さん',
+        shift: [
+          {
+            date: '2021-11-1',
+            value: [10, 11]
+          },
+          {
+            date: '2021-11-2',
+            value: [11, 21]
+          },
+          {
+            date: '2021-11-7',
+            value: [8, 12]
+          }        ]
+      }
+    ],
     table: [
       { tag_id: '1', tag_name: 'あああ', text: '', select: '',select1: ''},
-      // { tag_id: '2', tag_name: 'いいい', text: '', select: '',select1: ''},
-      // { tag_id: '3', tag_name: 'ううう', text: '', select: '',select1: ''},
-      // { tag_id: '4', tag_name: 'えええ', text: '', select: '',select1: ''}
+      { tag_id: '2', tag_name: 'いいい', text: '', select: '',select1: ''},
+      { tag_id: '3', tag_name: 'ううう', text: '', select: '',select1: ''},
+      { tag_id: '4', tag_name: 'えええ', text: '', select: '',select1: ''}
     ],
     day: [
       {id:'1'},

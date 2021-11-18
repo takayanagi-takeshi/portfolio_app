@@ -15,18 +15,45 @@
 <!-- --------------- -->
 
 <!-- --日と曜日を表示 -->
-  <div class="calendar">
-    <div class="calendar-day">
-      <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
+  <!-- <div class="calendar">
+    <div class="calendar-day"> -->
+      <!-- <table> -->
+        <div class="a">
+      <div  class="" v-for="(day, index) in calendarData" :key="index">
+
+        
         {{day.day}}
-      </div>
-    </div>
-    <div class="calendar-week">
-      <div  class="c-day" v-for="(day, index) in calendarData" :key="index">
-      {{ dayList[day.week] }}
-      </div>
-    </div>
-  </div>
+
+        {{ dayList[day.week] }}
+            
+
+        <div class="" v-if="requestUserShift(requestUserData(1)[0].shift, day.day)[0]">
+
+          {{ requestUserShift(requestUserData(1)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(1)[0].shift, day.day)[0].end_time }}
+        </div>
+        <div v-else> &nbsp; <br> &nbsp; </div>
+
+
+
+        <div v-if="requestUserShift(requestUserData(2)[0].shift, day.day)[0]">
+          {{ requestUserShift(requestUserData(2)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(2)[0].shift, day.day)[0].end_time }}
+        </div>
+                <div v-else> &nbsp; <br> &nbsp; </div>
+
+        <div v-if="requestUserShift(requestUserData(3)[0].shift, day.day)[0]">
+          {{ requestUserShift(requestUserData(3)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(3)[0].shift, day.day)[0].end_time }}
+        </div>
+                <div v-else> &nbsp; <br> &nbsp; </div>
+
+        </div>
+              </div>
+              
+      <!-- </table> -->
+    <!-- </div>
+  </div> -->
 <!-- --------------- -->
 
 <!--------------------------------------- ↑↑カレンダー機能 -------------------------------->
@@ -108,7 +135,76 @@ export default {
           { id: 2, name: 'みかん' }, 
           { id: 3, name: 'ぶどう' } 
       ], 
-
+      sample: [
+        {
+          id: 1,
+          name: '創造さん',
+          shift: [
+            {
+              date: '2021-11-1',
+              start_time: 12,
+              end_time: 20
+            },
+            {
+              date: '2021-11-2',
+              start_time: 10,
+              end_time: 12
+            },
+            {
+              date: '2021-11-7',
+              start_time: 12,
+              end_time: 13
+            },
+            {
+              date: '2021-11-25',
+              start_time: 12,
+              end_time: 13
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: 'リカレントさん',
+          shift: [
+            {
+              date: '2021-11-13',
+              start_time: 10,
+              end_time: 18
+            },
+            {
+              date: '2021-11-22',
+              start_time: 12,
+              end_time: 21
+            },
+            {
+              date: '2021-11-28',
+              start_time: 8,
+              end_time: 12
+            }
+          ]
+        },
+        {
+          id: 3,
+          name: 'qqqqqqqq',
+          shift: [
+            {
+              date: '2021-11-14',
+              start_time: 10,
+              end_time: 18
+            },
+            {
+              date: '2021-11-22',
+              start_time: 12,
+              end_time: 21
+            },
+            {
+              date: '2021-11-28',
+              start_time: 8,
+              end_time: 12
+            }
+          ]
+        },
+      ],
     }
   },
   computed: {
@@ -196,8 +292,18 @@ export default {
     },
     removeBox() {
       this.nameSelectboxList.pop(this.nameSelectboxList, 1)
-    }
+    },
     // ------------------------↑↑追加・削除ボタン---------------------------
+
+        // ------------------------↓↓userデータ取得---------------------------
+    requestUserData(id) {
+      return this.sample.filter(data => data.id === id)
+    },
+    requestUserShift(shift, day) {
+      const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
+      return shift.filter(data => data.date === d)
+    }
+        // ------------------------↑↑userデータ取得---------------------------
   },
 
 }
@@ -225,7 +331,7 @@ export default {
 }
 
 .calendar-week {
-  display: flex;
+  /* display: flex; */
   width: 400%;
   flex-wrap: wrap;
   text-align: center;
@@ -239,8 +345,14 @@ export default {
   justify-content: center;
   border: solid 1px;
   width: 30px;
-  height: 25px;
+  /* height: 25px; */
   white-space: nowrap;  
+
+}
+
+.a {
+  display: flex;
+
 }
 
 /* .c-week {
