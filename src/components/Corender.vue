@@ -360,6 +360,7 @@ export default {
   font-size: 20px;
   margin: auto;
   background-color: aquamarine;
+  text-align: center;
 }
 /* .c-week {
   font-size: 30px;
