@@ -359,7 +359,7 @@ export default {
 .time-data {
   font-size: 20px;
   margin: auto;
-  background-color: aquamarine;
+  background-color: rgb(127, 182, 255);
   text-align: center;
 }
 /* .c-week {
