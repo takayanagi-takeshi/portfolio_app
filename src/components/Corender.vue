@@ -177,7 +177,7 @@ export default {
               end_time: 21
             },
             {
-              date: '2021-11-28',
+              date: '2021-11-6',
               start_time: 8,
               end_time: 12
             }
@@ -188,7 +188,7 @@ export default {
           name: 'qqqqqqqq',
           shift: [
             {
-              date: '2021-11-14',
+              date: '2021-11-16',
               start_time: 10,
               end_time: 18
             },
@@ -353,7 +353,6 @@ export default {
 
 .a {
   display: flex;
-
 }
 
 .time-data {
@@ -362,6 +361,7 @@ export default {
   background-color: rgb(127, 182, 255);
   text-align: center;
 }
+
 /* .c-week {
   font-size: 30px;
   width: 13.8%;
