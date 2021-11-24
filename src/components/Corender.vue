@@ -20,7 +20,7 @@
       <!-- <table> -->
         <div class="a">
       <div  class="time-data" v-for="(day, index) in calendarData" :class="fontColor(day.week)"  :key="index">
-        <!-- <div v-if="day.week === 6" :class="{textcolor: true}"></div> -->
+
         
         {{day.day}}
 <br>
@@ -292,6 +292,10 @@ export default {
       if (week === 0) {
         return "textcolorred"
       }
+      // const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
+      // if (d === this.$store.state.items) {
+      //   return "textcolorred"
+      // }
     },
         // ------------------------↑↑曜日の背景色を指定---------------------------
 
