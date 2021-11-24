@@ -23,15 +23,15 @@ export default new Vuex.Store({
       {name: 'Ken', email: 'ken@amazon.com',age:29}
       ],
 
-    multiSelect: 'select1',
-    multiSelectOptions: [
-      { label: 'セレクト1', value: 'select1' },
-      { label: 'セレクト2', value: 'select2' },
-      { label: 'セレクト3', value: 'select3' },
-      { label: 'セレクト4', value: 'select4' },
-      { label: 'セレクト5', value: 'select5' },
-      { label: '', value: '' }
-    ],
+    // multiSelect: 'select1',
+    // multiSelectOptions: [
+    //   { label: 'セレクト1', value: 'select1' },
+    //   { label: 'セレクト2', value: 'select2' },
+    //   { label: 'セレクト3', value: 'select3' },
+    //   { label: 'セレクト4', value: 'select4' },
+    //   { label: 'セレクト5', value: 'select5' },
+    //   { label: '', value: '' }
+    // ],
 
   // actions: {//非同期処理はactionに書く
   //   getCovidData: function() { //{commit}
@@ -51,7 +51,7 @@ export default new Vuex.Store({
   },
   actions: {
     getCovidData: function({commit}) {
-      return axios.get('/api/v1/datetime.json')
+      return axios.get('/api/v1/date.json')
       .then(response => {
         commit('setCovidData',response.data)
       })

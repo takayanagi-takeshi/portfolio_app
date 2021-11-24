@@ -19,13 +19,13 @@
     <div class="calendar-day"> -->
       <!-- <table> -->
         <div class="a">
-      <div  class="time-data" v-for="(day, index) in calendarData" :key="index">
-
+      <div  class="time-data" v-for="(day, index) in calendarData" :class="fontColor(day.week)"  :key="index">
+        <!-- <div v-if="day.week === 6" :class="{textcolor: true}"></div> -->
         
         {{day.day}}
 <br>
         {{ dayList[day.week] }}
-            
+
 
         <div class="" v-if="requestUserShift(requestUserData(1)[0].shift, day.day)[0]">
 
@@ -67,11 +67,11 @@
 </select> -->
 
 <!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
-<div class="selectbox" v-for="box in nameSelectboxList" :key="box.id">
+<div class="selectbox" v-for="box in sample" :key="box.id">
   <div class="name">
     <select class="selectbox" v-model="box.selected">
-      <option class="selectbox" v-for="s in $store.state.multiSelectOptions" :value="s.value" :key="s.id">
-        {{s.label}}
+      <option class="selectbox" v-for="s in sample" :value="s.value" :key="s.id">
+        {{s.name}}
       </option>
     </select>
   </div>
@@ -87,7 +87,7 @@
   </div> -->
 <!-- ----------------------------↑↑セレクトボックス表示 --------------------------->
 <!-- ----------------------------↓↓シフトタイム設定表示 --------------------------->
-<div>
+<!-- <div>
 <select v-model="selectedFruits">
   <option disabled value="">果物一覧</option>
   <option v-for="fruit in optionFruits" 
@@ -96,7 +96,7 @@
     {{ fruit.name }}
   </option>
 </select>
-</div>
+</div> -->
 <!-- ----------------------------↑↑シフトタイム設定表示 --------------------------->
 </div>
 </template>
@@ -113,28 +113,28 @@ export default {
       now_month: new Date().getMonth()+1,
       // weeks: new Date(),
 
-      nameSelectboxList: [
-        {
-          id: 0,
-          selected: ''
-        },
-        {
-          id: 1,
-          selected: ''
+      // nameSelectboxList: [
+      //   {
+      //     id: 0,
+      //     selected: ''
+      //   },
+      //   {
+      //     id: 1,
+      //     selected: ''
 
-        },
-        {
-          id: 2,
-          selected: ''
+      //   },
+      //   {
+      //     id: 2,
+      //     selected: ''
 
-        }
-      ],
-      selectedFruits: '', 
-      optionFruits: [ 
-          { id: 1, name: 'りんご' }, 
-          { id: 2, name: 'みかん' }, 
-          { id: 3, name: 'ぶどう' } 
-      ], 
+      //   }
+      // ],
+      // selectedFruits: '', 
+      // optionFruits: [ 
+      //     { id: 1, name: 'りんご' }, 
+      //     { id: 2, name: 'みかん' }, 
+      //     { id: 3, name: 'ぶどう' } 
+      // ], 
       sample: [
         {
           id: 1,
@@ -283,15 +283,22 @@ export default {
       }
     },
     // ------------------------↑↑年・月を１ヶ月毎に切り替える---------------------------
-
+    fontColor(week) {
+      if (week === 6 ) {
+        return "textcolorblue"
+      }
+      if (week === 0) {
+        return "textcolorred"
+      }
+    },
 
     // ------------------------↓↓追加・削除ボタン---------------------------
     addBox() {
-      this.nameSelectboxList.push({ id: this.nameSelectboxList.length })
-      this.nameSelectboxList.splice()
+      this.sample.push({name: this.sample.length })
+      this.sample.splice()
     },
     removeBox() {
-      this.nameSelectboxList.pop(this.nameSelectboxList, 1)
+      this.sample.pop(this.sample, 1)
     },
     // ------------------------↑↑追加・削除ボタン---------------------------
 
@@ -360,6 +367,14 @@ export default {
   margin: auto;
   background-color: rgb(127, 182, 255);
   text-align: center;
+}
+
+.textcolorblue {
+  color: blue;
+}
+
+.textcolorred {
+  color: red;
 }
 
 /* .c-week {
