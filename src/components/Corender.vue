@@ -16,7 +16,7 @@
 
 <!-- --日と曜日を表示 -->
   <!-- <div class="calendar">
-    <div class="calendar-day"> -->
+    <div class="calendar-day">  -->
       <!-- <table> -->
         <div class="a">
       <div  class="time-data" v-for="(day, index) in calendarData" :class="fontColor(day.week)"  :key="index">
