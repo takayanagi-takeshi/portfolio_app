@@ -21,10 +21,12 @@
   <div class="shift">
   <div class="shifts"></div>
   <div class="shifts"  v-for="(box, index) in nameSelectboxList" :key="box.id" >
-  <select class="selectbox" v-model="nameSelectboxList[index].id" @change="readUserDataShift">
+  <select class="selectbox" v-model="nameSelectboxList[index].id">
     <option class="selectbox" v-for="s in sample" :value="s.id" :key="s.id">
       {{s.name}}
+      
     </option>
+    
   </select>
   </div>
   </div>
@@ -46,9 +48,26 @@
         <div v-if="requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0]">
 
           {{ requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0].start_time }}<br>
+          <div class="end_time">
           {{ requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0].end_time }}
+          </div>
         </div>
         <div v-else> &nbsp; <br> &nbsp; </div>
+        </div>
+
+
+
+        <div>
+          <select v-model="sample.shift.start_time">
+            <option class="selectbox" v-for="a in oneday.countOptions" :value="a.id" :key="a.id">
+      {{a.text}}
+    </option>
+          </select>
+          <!-- <select v-model="sample.shift.end_time">
+            <option class="selectbox" v-for="a in oneday.countOptions1" :value="a.id" :key="a.id">
+      {{a.text}}
+    </option>
+          </select> -->
         </div>
 
 <!-- 
@@ -109,6 +128,22 @@ export default {
       now_month: new Date().getMonth()+1,
       // weeks: new Date(),
       box_selected: 1,
+      oneday:{
+          countOptions: [
+            { text: '', value: '' },
+            { text: '◯', value: '11' },
+            { text: '７', value: '7' },
+            { text: '8', value: '8' },
+            { text: '9', value: '9' }
+          ],
+          countOptions1: [
+            { text: '', value: '' },
+            { text: '17', value: '17' },
+            { text: '18', value: '18' },
+            { text: '19', value: '19' },
+            { text: '20', value: '20' }
+          ],
+        },
       nameSelectboxList: [
         {
           id: 1,
@@ -124,16 +159,11 @@ export default {
           selected: ''
 
         },
-        {
-          id: 1,
+                {
+          id: 4,
           selected: ''
 
         },
-        {
-          id: 1,
-          selected: ''
-
-        }
       ],
       // selectedFruits: '', 
       // optionFruits: [ 
@@ -191,7 +221,7 @@ export default {
         },
         {
           id: 3,
-          name: 'qqqqqqqq',
+          name: 'qqqqqqqqさん',
           shift: [
             {
               date: '2021-11-16',
@@ -208,6 +238,12 @@ export default {
               start_time: 8,
               end_time: 12
             }
+          ]
+        },
+        {
+          id: 4,
+          name: '4aさん',
+          shift: [
           ]
         },
       ],
@@ -290,6 +326,7 @@ export default {
     },
     // ------------------------↑↑年・月を１ヶ月毎に切り替える---------------------------
 
+
         // ------------------------↓↓曜日の背景色を指定---------------------------
     fontColor(week, ) {
       if (week === 6 ) {
@@ -304,6 +341,7 @@ export default {
       // }
     },
         // ------------------------↑↑曜日の背景色を指定---------------------------
+
 
     // ------------------------↓↓追加・削除ボタン---------------------------
     addBox() {
@@ -328,9 +366,9 @@ export default {
         
 
 
-    readUserDataShift(selected) {
-      return this.sample.id(selected)
-    },
+    // readUserDataShift(selected) {
+    //   return this.sample.id(selected)
+    // },
 
     findIndexId(id) {
       return this.nameSelectboxList.findIndex(d => d.id === id)
@@ -390,7 +428,8 @@ export default {
   margin: auto;
   border-left: 1px solid darkslategray;
   text-align: center;
-  width: 25px;
+  width: 30px;
+  padding-right: 1px;
 }
 
 .textcolorblue {
@@ -454,6 +493,12 @@ export default {
 .days {
   display: inline-block;
   height: 70px;
+}
+
+.end_time {
+  border-top: dashed rgba(54, 53, 53, 0.219) 1px;
+  margin-top: 3px;
+  padding-top: 3px;
 }
 
 
