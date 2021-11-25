@@ -3,6 +3,8 @@
   <ul>
     <li v-for="user in users"  v-bind:key="user.name">{{ user.name }} ({{ user.email }})</li>
   </ul>
+
+
   <!--------------------------------------- ↓↓カレンダー機能 -------------------------------->
 
   <!--- 年・月を選択 ---->
@@ -14,6 +16,20 @@
   </div>
 <!-- --------------- -->
 
+  <div class="flexbox">
+  <!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
+  <div class="shift">
+  <div class="shifts"></div>
+  <div class="shifts"  v-for="(box, index) in nameSelectboxList" :key="box.id" >
+  <select class="selectbox" v-model="nameSelectboxList[index].id" @change="readUserDataShift">
+    <option class="selectbox" v-for="s in sample" :value="s.id" :key="s.id">
+      {{s.name}}
+    </option>
+  </select>
+  </div>
+  </div>
+  <!-- ----------------------------↑↑セレクトボックス表示 --------------------------->
+
 <!-- --日と曜日を表示 -->
   <!-- <div class="calendar">
     <div class="calendar-day">  -->
@@ -21,32 +37,32 @@
         <div class="a">
       <div  class="time-data" v-for="(day, index) in calendarData" :class="fontColor(day.week)"  :key="index">
 
-        
-        {{day.day}}
-<br>
+        <span class="days">
+        {{day.day}}<br>
         {{ dayList[day.week] }}
+        </span>
 
+        <div class="shifts" v-for="(box, index) in nameSelectboxList" :key="box.id">
+        <div v-if="requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0]">
 
-        <div class="" v-if="requestUserShift(requestUserData(1)[0].shift, day.day)[0]">
-
-          {{ requestUserShift(requestUserData(1)[0].shift, day.day)[0].start_time }}<br>
-          {{ requestUserShift(requestUserData(1)[0].shift, day.day)[0].end_time }}
+          {{ requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0].end_time }}
         </div>
         <div v-else> &nbsp; <br> &nbsp; </div>
+        </div>
 
-
-
-        <div v-if="requestUserShift(requestUserData(2)[0].shift, day.day)[0]">
-          {{ requestUserShift(requestUserData(2)[0].shift, day.day)[0].start_time }}<br>
-          {{ requestUserShift(requestUserData(2)[0].shift, day.day)[0].end_time }}
+<!-- 
+        <div v-if="requestUserShift(requestUserData(nameSelectboxList[1].id)[0].shift, day.day)[0]">
+          {{ requestUserShift(requestUserData(nameSelectboxList[1].id)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(nameSelectboxList[1].id)[0].shift, day.day)[0].end_time }}
         </div>
                 <div v-else> &nbsp; <br> &nbsp; </div>
 
-        <div v-if="requestUserShift(requestUserData(3)[0].shift, day.day)[0]">
-          {{ requestUserShift(requestUserData(3)[0].shift, day.day)[0].start_time }}<br>
-          {{ requestUserShift(requestUserData(3)[0].shift, day.day)[0].end_time }}
+        <div v-if="requestUserShift(requestUserData(nameSelectboxList[2].id)[0].shift, day.day)[0]">
+          {{ requestUserShift(requestUserData(nameSelectboxList[2].id)[0].shift, day.day)[0].start_time }}<br>
+          {{ requestUserShift(requestUserData(nameSelectboxList[2].id)[0].shift, day.day)[0].end_time }}
         </div>
-                <div v-else> &nbsp; <br> &nbsp; </div>
+                <div v-else> &nbsp; <br> &nbsp; </div> -->
 
         </div>
               </div>
@@ -57,7 +73,7 @@
 <!-- --------------- -->
 
 <!--------------------------------------- ↑↑カレンダー機能 -------------------------------->
-
+  </div>
 
   <!-- <select v-model="selected">
   <option disabled value="">名前を選択</option>
@@ -66,26 +82,6 @@
   <option>C</option>
 </select> -->
 
-<!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
-<div class="selectbox" v-for="box in sample" :key="box.id">
-  <div class="name">
-    <select class="selectbox" v-model="box.selected">
-      <option class="selectbox" v-for="s in sample" :value="s.value" :key="s.id">
-        {{s.name}}
-      </option>
-    </select>
-  </div>
-</div>
-<button class="editbox" type="button" @click="addBox">追加</button>
-<button class="editbox" type="button" @click="removeBox">削除</button>
-      <!-- <div class="name1">
-        <select v-model="$store.state.multiSelect">
-      <option v-for="q in $store.state.multiSelectOptions" :value="q.value" :key="q">
-        {{q.label}}
-      </option>
-    </select>
-  </div> -->
-<!-- ----------------------------↑↑セレクトボックス表示 --------------------------->
 <!-- ----------------------------↓↓シフトタイム設定表示 --------------------------->
 <!-- <div>
 <select v-model="selectedFruits">
@@ -112,23 +108,33 @@ export default {
       now_year: new Date().getFullYear(),
       now_month: new Date().getMonth()+1,
       // weeks: new Date(),
+      box_selected: 1,
+      nameSelectboxList: [
+        {
+          id: 1,
+          selected: ''
+        },
+        {
+          id: 2,
+          selected: ''
 
-      // nameSelectboxList: [
-      //   {
-      //     id: 0,
-      //     selected: ''
-      //   },
-      //   {
-      //     id: 1,
-      //     selected: ''
+        },
+        {
+          id: 3,
+          selected: ''
 
-      //   },
-      //   {
-      //     id: 2,
-      //     selected: ''
+        },
+        {
+          id: 1,
+          selected: ''
 
-      //   }
-      // ],
+        },
+        {
+          id: 1,
+          selected: ''
+
+        }
+      ],
       // selectedFruits: '', 
       // optionFruits: [ 
       //     { id: 1, name: 'りんご' }, 
@@ -285,7 +291,7 @@ export default {
     // ------------------------↑↑年・月を１ヶ月毎に切り替える---------------------------
 
         // ------------------------↓↓曜日の背景色を指定---------------------------
-    fontColor(week) {
+    fontColor(week, ) {
       if (week === 6 ) {
         return "textcolorblue"
       }
@@ -317,10 +323,20 @@ export default {
     requestUserShift(shift, day) {
       const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
       return shift.filter(data => data.date === d)
-    }
+    },
         // --↑↑shiftデータの日付とカレンダーの日付を照合しあったものを取得-----------
-  },
+        
 
+
+    readUserDataShift(selected) {
+      return this.sample.id(selected)
+    },
+
+    findIndexId(id) {
+      return this.nameSelectboxList.findIndex(d => d.id === id)
+    }
+    
+  },
 }
 </script>
 
@@ -372,8 +388,9 @@ export default {
 .time-data {
   font-size: 20px;
   margin: auto;
-  background-color: rgb(127, 182, 255);
+  border-left: 1px solid darkslategray;
   text-align: center;
+  width: 25px;
 }
 
 .textcolorblue {
@@ -428,7 +445,22 @@ export default {
 }
 
 .selectbox {
-  height: 30px;
+  height: 50px;
+  display: block;
+}
+.flexbox {
+  display: flex;
+}
+.days {
+  display: inline-block;
+  height: 70px;
+}
+
+
+.shifts {
+  height: 70px;
+  background-color: rgba(127, 197, 255, 0.541);
+  margin-top: 1px;
 }
 
 .editbox {
