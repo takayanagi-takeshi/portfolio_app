@@ -10,7 +10,7 @@
   <!--- 年・月を選択 ---->
   <div class="month">
     <button type="button" @click="monthMinus" class="border">⇦</button>
-    <div class="now_year">{{now_year}}年aaaa</div>
+    <div class="now_year">{{now_year}}年aaaaaaccccc</div>
     <div class="now_month">{{now_month}}</div>
     <button type="button" @click="monthPlus">⇨</button>
   </div>
