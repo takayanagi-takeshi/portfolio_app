@@ -9,10 +9,10 @@
         <nav>
           <ul>
             <li>
-              <router-link to="/demotest" class="heder_txet">DemoTest</router-link>
-              <router-link to="/apidata" class="heder_txet">API閲覧</router-link>
-              <a href="#" class="heder_txet">シフト希望</a>
-              <router-link to="/admin" class="heder_txet" >管理者(編集)</router-link>
+              <!-- <router-link to="/demotest" class="heder_txet">DemoTest</router-link> -->
+              <!-- <router-link to="/apidata" class="heder_txet">API閲覧</router-link> -->
+              <!-- <a href="#" class="heder_txet">シフト希望</a> -->
+              <!-- <router-link to="/admin" class="heder_txet" >管理者(編集)</router-link> -->
             </li>
           </ul>
         </nav>
@@ -23,18 +23,18 @@
     <div id="main_login_image">
       <h2>シフトをWeb上で管理するアプリ</h2>
     </div>
-  <div class="text-input">
+  <!-- <div class="text-input">
     <div class="login-title1">ID:</div>
     <input v-model="emailAddress" placeholder="ログインID" class="text1" >
     <div class="login-title2">PASS:</div>
     <input v-model="password" placeholder="パスワード" class="text2" >
-  </div>
+  </div> -->
   <div class="main">
     <!-- <a @click="SignIn">ログイン</a> -->
     <!-- <a @click="SignUp">新規登録</a> -->
 
     <button @click="SignInGoogle">Googleログイン</button>
-    <button @click="signout">ログアウト</button>
+    <!-- <button @click="signout">ログアウト</button> -->
   </div>
 
   <ul>
@@ -65,6 +65,7 @@ export default {
     return {
       emailAddress: 'test@example.com',
       password: 'Password',
+      Timer: null,
     // emailAddress: '',
 
 
@@ -123,7 +124,7 @@ export default {
     },
   },
 
-
+  mounted: function(){
 // document.addEventListener('DOMContentLoaded', function () {
 //   let Timer = function (saleStartTime, saleEndTime, endMessage, outputDestination) {
 //     this.saleStartTime = saleStartTime;
@@ -170,7 +171,7 @@ export default {
 //   let myTimer = new Timer('2021/1/11 00:00:00', '2021/11/31 23:59:59', '終了！', 'timer');
 //   myTimer.countDown();
 // }, false)
-
+  }
 }
 </script>
 

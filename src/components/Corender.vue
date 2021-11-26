@@ -10,11 +10,32 @@
   <!--- 年・月を選択 ---->
   <div class="month">
     <button type="button" @click="monthMinus" class="border">⇦</button>
-    <div class="now_year">{{now_year}}年aaaaaaccccc</div>
-    <div class="now_month">{{now_month}}</div>
+    <div class="now_year">{{now_year}}年</div>
+    <div class="now_month">{{now_month}}月</div>
     <button type="button" @click="monthPlus">⇨</button>
   </div>
 <!-- --------------- -->
+
+<div>
+  <input type="text">月<input type="text">日
+  <span>
+    氏名<input type="text">
+  </span>
+</div>
+<div>
+  前半<select v-model="sample.shift.start_time">
+    <option class="selectbox" v-for="a in oneday.countOptions" :value="a.id" :key="a.id">
+      {{a.text}}
+    </option>
+  </select>
+  後半<select v-model="sample.shift.start_time">
+    <option class="selectbox" v-for="a in oneday.countOptions1" :value="a.id" :key="a.id">
+      {{a.text}}
+    </option>
+  </select>
+  <span><button>保存</button></span>
+  <span><button>削除</button></span>
+</div>
 
   <div class="flexbox">
   <!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
@@ -44,7 +65,7 @@
         {{ dayList[day.week] }}
         </span>
 
-        <div class="shifts" v-for="(box, index) in nameSelectboxList" :key="box.id">
+        <div class="shifts" v-for="(box, index) in nameSelectboxList" :key="box.id" @click="btnClicked(e)">
         <div v-if="requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0]">
 
           {{ requestUserShift(requestUserData(nameSelectboxList[index].id)[0].shift, day.day)[0].start_time }}<br>
@@ -164,6 +185,11 @@ export default {
           selected: ''
 
         },
+                {
+          id: 5,
+          selected: ''
+
+        },
       ],
       // selectedFruits: '', 
       // optionFruits: [ 
@@ -246,6 +272,12 @@ export default {
           shift: [
           ]
         },
+                {
+          id: 5,
+          name: '',
+          shift: [
+          ]
+        }
       ],
     }
   },
@@ -307,6 +339,9 @@ export default {
 
 
   methods: {
+    // btnClicked(e) {
+    //     let id = e.currentTarget.getAttribute(smple.id)
+    // },
     // ------------------------↓↓年・月を１ヶ月毎に切り替える---------------------------
     monthPlus() {
       if(this.now_month == 12) {
@@ -328,17 +363,17 @@ export default {
 
 
         // ------------------------↓↓曜日の背景色を指定---------------------------
-    fontColor(week, ) {
+    fontColor(week, day) {
       if (week === 6 ) {
         return "textcolorblue"
       }
       if (week === 0) {
         return "textcolorred"
       }
-      // const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
-      // if (d === this.$store.state.items) {
-      //   return "textcolorred"
-      // }
+      const d = String(this.now_year) + '-' + String(this.now_month) + '-' + String(day)
+      if (d === this.$store.state.items) {
+        return "textcolorred"
+      }
     },
         // ------------------------↑↑曜日の背景色を指定---------------------------
 
