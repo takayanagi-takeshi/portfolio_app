@@ -48,7 +48,7 @@ export default {
 .siguout {
   display: block;
   margin-left: auto;
-  width: 30%;
+  width: 40%;
   margin-bottom: 20px;
   padding: 5px;
   background-color: rgba(237, 100, 130, 0.548);
@@ -66,7 +66,7 @@ export default {
 .siguout {
   display: block;
   margin-left: auto;
-  width: 40%;
+  width: 30%;
   margin-bottom: 20px;
   padding: 5px;
   background-color: rgba(237, 100, 130, 0.548);
