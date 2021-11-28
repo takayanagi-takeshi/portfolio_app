@@ -43,7 +43,7 @@
           {{ a.text }}
         </option>
       </select>
-      <span><button>保存</button></span>
+      <span><button @click="set()">保存</button></span>
       <span><button>削除</button></span>
     </div>
 
@@ -120,7 +120,7 @@
             </div>
           </div>
 
-          <div>
+          <!-- <div>
             <select v-model="sample.shift.start_time">
               <option
                 class="selectbox"
@@ -128,15 +128,15 @@
                 :value="a.id"
                 :key="a.id"
               >
-                {{ a.text }}
-              </option>
-            </select>
-            <!-- <select v-model="sample.shift.end_time">
+                {{ a.text }} -->
+          <!-- </option>
+            </select> -->
+          <!-- <select v-model="sample.shift.end_time">
             <option class="selectbox" v-for="a in oneday.countOptions1" :value="a.id" :key="a.id">
       {{a.text}}
       </option>
           </select> -->
-          </div>
+          <!-- </div> -->
 
           <!-- 
         <div v-if="requestUserShift(requestUserData(nameSelectboxList[1].id)[0].shift, day.day)[0]">
@@ -353,6 +353,23 @@ export default {
     btnClicked() {
       this.sample.name;
       // return (this.id = e.currentTarget.getAttribute("sample"));
+    },
+
+    set() {
+      localStorage.setItem(
+        "obj",
+        JSON.stringify({
+          id: 10,
+          name: "",
+          shift: [
+            {
+              date: "",
+              start_time: 12,
+              end_time: 20,
+            },
+          ],
+        })
+      );
     },
     // ------------------------↓↓年・月を１ヶ月毎に切り替える---------------------------
     monthPlus() {
