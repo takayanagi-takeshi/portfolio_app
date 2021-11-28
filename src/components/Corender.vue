@@ -21,6 +21,7 @@
       <input type="text" />月<input type="text" />日
       <span> 氏名<input type="text" /> </span>
     </div>
+    {{ sample.name }}
     <div>
       前半<select v-model="sample.shift.start_time">
         <option
@@ -71,8 +72,7 @@
 
       <!-- --日と曜日を表示 -->
       <!-- <div class="calendar">
-    <div class="calendar-day">  -->
-      <!-- <table> -->
+      <div class="calendar-day">  -->
       <div class="a">
         <div
           class="time-data"
@@ -89,7 +89,7 @@
             class="shifts"
             v-for="(box, index) in nameSelectboxList"
             :key="box.id"
-            @click="btnClicked(e)"
+            @click="btnClicked(sample.name)"
           >
             <div
               v-if="
@@ -134,7 +134,7 @@
             <!-- <select v-model="sample.shift.end_time">
             <option class="selectbox" v-for="a in oneday.countOptions1" :value="a.id" :key="a.id">
       {{a.text}}
-    </option>
+      </option>
           </select> -->
           </div>
 
@@ -150,36 +150,12 @@
           {{ requestUserShift(requestUserData(nameSelectboxList[2].id)[0].shift, day.day)[0].end_time }}
         </div>
                 <div v-else> &nbsp; <br> &nbsp; </div> -->
+          <!-- </div>
+          </div> -->
+          <!--------------------------------------- ↑↑カレンダー機能 -------------------------------->
         </div>
       </div>
-
-      <!-- </table> -->
-      <!-- </div>
-  </div> -->
-      <!-- --------------- -->
-
-      <!--------------------------------------- ↑↑カレンダー機能 -------------------------------->
     </div>
-
-    <!-- <select v-model="selected">
-  <option disabled value="">名前を選択</option>
-  <option>A</option>
-  <option>B</option>
-  <option>C</option>
-</select> -->
-
-    <!-- ----------------------------↓↓シフトタイム設定表示 --------------------------->
-    <!-- <div>
-<select v-model="selectedFruits">
-  <option disabled value="">果物一覧</option>
-  <option v-for="fruit in optionFruits" 
-    v-bind:value="fruit.name" 
-    v-bind:key="fruit.id">
-    {{ fruit.name }}
-  </option>
-</select>
-</div> -->
-    <!-- ----------------------------↑↑シフトタイム設定表示 --------------------------->
   </div>
 </template>
 
@@ -238,32 +214,6 @@ export default {
       //     { id: 3, name: 'ぶどう' }
       // ],
       sample: [
-        {
-          id: 1,
-          name: "創造さん",
-          shift: [
-            {
-              date: "2021-11-4",
-              start_time: 12,
-              end_time: 20,
-            },
-            {
-              date: "2021-11-2",
-              start_time: 10,
-              end_time: 12,
-            },
-            {
-              date: "2021-11-7",
-              start_time: 12,
-              end_time: 13,
-            },
-            {
-              date: "2021-11-25",
-              start_time: 12,
-              end_time: 13,
-            },
-          ],
-        },
         {
           id: 1,
           name: "創造さん",
@@ -400,9 +350,10 @@ export default {
   // --------------------------↑↑年・月・曜日を取得------------------------------------
 
   methods: {
-    // btnClicked(e) {
-    //     let id = e.currentTarget.getAttribute(smple.id)
-    // },
+    btnClicked() {
+      this.sample.name;
+      // return (this.id = e.currentTarget.getAttribute("sample"));
+    },
     // ------------------------↓↓年・月を１ヶ月毎に切り替える---------------------------
     monthPlus() {
       if (this.now_month == 12) {
@@ -477,6 +428,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 * {
