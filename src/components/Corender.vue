@@ -8,25 +8,25 @@
 
     <!--------------------------------------- ↓↓カレンダー機能 -------------------------------->
 
+    <header>
+      <!--- 年・月を選択 ---->
+      <div class="month">
+        <button type="button" @click="monthMinus" class="border">⇦</button>
+        <div class="now_year">{{ now_year }}年</div>
+        <div class="now_month">{{ now_month }}月</div>
+        <button type="button" @click="monthPlus">⇨</button>
+      </div>
+      <!-- --------------- -->
 
-<header>
-    <!--- 年・月を選択 ---->
-    <div class="month">
-      <button type="button" @click="monthMinus" class="border">⇦</button>
-      <div class="now_year">{{ now_year }}年</div>
-      <div class="now_month">{{ now_month }}月</div>
-      <button type="button" @click="monthPlus">⇨</button>
-    </div>
-    <!-- --------------- -->
-
-
-
-
-    <!--------------------------------------- ↓↓シフト入力機能 -------------------------------->
-    <div>
-      <input class="select-carender" type="text" v-model="inputMonth" />月<input class="select-carender" type="text" v-model="inputDay"/>日
-      <!-- <div v-model="inputName"> -->
-      氏名<select class="select-carender1" v-model="inputName">
+      <!--------------------------------------- ↓↓シフト入力機能 -------------------------------->
+      <div>
+        <input
+          class="select-carender"
+          type="text"
+          v-model="inputMonth"
+        />月<input class="select-carender" type="text" v-model="inputDay" />日
+        <!-- <div v-model="inputName"> -->
+        氏名<select class="select-carender1" v-model="inputName">
           <option
             class="selectbox1"
             v-for="s in sample"
@@ -37,37 +37,38 @@
           </option>
         </select>
         <!-- </div> -->
-    </div>
+      </div>
 
-    <div>
-      出勤<select class="select-carender" v-model="sample.shift">
-        <option
-          class="selectbox"
-          v-for="a in oneday.countOptions"
-          :value="a.id"
-          :key="a.id"
+      <div>
+        出勤<select class="select-carender" v-model="sample.shift">
+          <option
+            class="selectbox"
+            v-for="a in oneday.countOptions"
+            :value="a.id"
+            :key="a.id"
+          >
+            {{ a.text }}
+          </option>
+        </select>
+        退勤<select class="select-carender" v-model="sample.shift">
+          <option
+            class="selectbox"
+            v-for="a in oneday.countOptions1"
+            :value="a.id"
+            :key="a.id"
+          >
+            {{ a.text }}
+          </option>
+        </select>
+        <span
+          ><button class="add-carender" @click="addItem(index)">
+            保 存
+          </button></span
         >
-          {{ a.text }}
-        </option>
-      </select>
-      退勤<select class="select-carender" v-model="sample.shift">
-        <option
-          class="selectbox"
-          v-for="a in oneday.countOptions1"
-          :value="a.id"
-          :key="a.id"
-        >
-          {{ a.text }}
-        </option>
-      </select>
-      <span><button class="add-carender" @click="addItem(index)" >保 存</button></span>
-      <!-- <span><button class="add-carender1">削除</button></span> -->
-    </div>
-    <!--------------------------------------- ↑↑シフト入力機能 -------------------------------->
-</header>
-
-
-
+        <!-- <span><button class="add-carender1">削除</button></span> -->
+      </div>
+      <!--------------------------------------- ↑↑シフト入力機能 -------------------------------->
+    </header>
 
     <div class="flexbox">
       <!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
@@ -92,9 +93,6 @@
       </div>
       <!-- ----------------------------↑↑セレクトボックス表示 --------------------------->
 
-
-
-
       <!-- --日と曜日を表示 -->
       <!-- <div class="calendar">
       <div class="calendar-day">  -->
@@ -115,7 +113,6 @@
             v-for="(box, index) in nameSelectboxList"
             :key="box.id"
           >
-          
             <div
               v-if="
                 requestUserShift(
@@ -126,12 +123,13 @@
               @click="btnClicked(day.day, index)"
             >
               <div class="start_time" @click="btnClicked(day.day, index)">
-              {{
-                requestUserShift(
-                  requestUserData(nameSelectboxList[index].id)[0].shift,
-                  day.day
-                )[0].start_time
-              }}</div>
+                {{
+                  requestUserShift(
+                    requestUserData(nameSelectboxList[index].id)[0].shift,
+                    day.day
+                  )[0].start_time
+                }}
+              </div>
               <div class="end_time" @click="btnClicked(day.day, index)">
                 {{
                   requestUserShift(
@@ -200,7 +198,7 @@ export default {
       now_year: new Date().getFullYear(),
       now_month: new Date().getMonth() + 1,
       // weeks: new Date(),
-      eventObject: '',
+      eventObject: "",
       box_selected: 1,
       oneday: {
         countOptions: [
@@ -327,15 +325,13 @@ export default {
         },
       ],
       inputMonth: new Date().getMonth() + 1,
-      inputDay: '',
-      inputName: '',
+      inputDay: "",
+      inputName: "",
     };
   },
-    // <!--------------------------------------- ↑↑データ -------------------------------->
-    // <!--------------------------------------- ↑↑データ -------------------------------->
-    // <!--------------------------------------- ↑↑データ -------------------------------->
-
-
+  // <!--------------------------------------- ↑↑データ -------------------------------->
+  // <!--------------------------------------- ↑↑データ -------------------------------->
+  // <!--------------------------------------- ↑↑データ -------------------------------->
 
   computed: {
     // ----usersデータをvuexで取り出し---
@@ -343,8 +339,6 @@ export default {
       return this.$store.state.users;
     },
     // ----usersデータをvuexで取り出し---
-
-
 
     // -----------------------------↓↓年・月・曜日を取得-------------------------------
     getTsuki() {
@@ -393,29 +387,27 @@ export default {
   },
   // --------------------------↑↑年・月・曜日を取得------------------------------------
 
-
-
-
   methods: {
     btnClicked(day, index) {
       // console.log(this.now_month + '月' + day + '日')
-      this.inputDay = day
+      this.inputDay = day;
       // console.log(this.sample[index].name)
-      this.inputName = index + 1
+      this.inputName = index + 1;
       // return (this.id = e.currentTarget.getAttribute("sample"));
       // this.eventObject = sTime
       // console.log(sTime)
     },
 
-    addItem: function(inputName){
-        // this.sample.push(this.sample);
-        // this.sample.shift = '';
-        // console.log();
-        const days = this.now_year + '-' + this.now_month + '-' + this.inputDay
-        const result = this.sample[inputName].shift.findIndex(d => d.date === days)
-        this.sample[inputName].shift[result].start_time = 99
-      },
-
+    addItem: function (inputName) {
+      // this.sample.push(this.sample);
+      // this.sample.shift = '';
+      // console.log();
+      const days = this.now_year + "-" + this.now_month + "-" + this.inputDay;
+      const result = this.sample[inputName].shift.findIndex(
+        (d) => d.date === days
+      );
+      this.sample[inputName].shift[result].start_time = 99;
+    },
 
     set() {
       localStorage.setItem(
@@ -434,9 +426,6 @@ export default {
       );
     },
 
-
-
-
     // ------------------------↓↓年・月を１ヶ月毎に切り替える---------------------------
     monthPlus() {
       if (this.now_month == 12) {
@@ -445,7 +434,7 @@ export default {
       } else {
         this.now_month++;
       }
-      this.inputMonth = this.now_month
+      this.inputMonth = this.now_month;
     },
     monthMinus() {
       if (this.now_month == 1) {
@@ -454,11 +443,9 @@ export default {
       } else {
         this.now_month--;
       }
-      this.inputMonth = this.now_month
+      this.inputMonth = this.now_month;
     },
     // ------------------------↑↑年・月を１ヶ月毎に切り替える---------------------------
-
-
 
     // ------------------------↓↓曜日の背景色を指定---------------------------
     fontColor(week, day) {
@@ -480,9 +467,6 @@ export default {
     },
     // ------------------------↑↑曜日の背景色を指定---------------------------
 
-
-
-
     // ------------------------↓↓追加・削除ボタン---------------------------
     addBox() {
       this.sample.push({ name: this.sample.length });
@@ -492,9 +476,6 @@ export default {
       this.sample.pop(this.sample, 1);
     },
     // ------------------------↑↑追加・削除ボタン---------------------------
-
-
-
 
     // --↓↓shiftデータの日付とカレンダーの日付を照合しあったものを取得----------------
     requestUserData(id) {
@@ -535,7 +516,7 @@ export default {
   /* position: absolute; */
 }
 
-header{
+header {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -620,7 +601,7 @@ header{
 .name {
   margin-top: 5px;
   margin-bottom: 10px;
-  /* display: flex; */
+  /* display:  flex; */
   justify-content: center;
   /* border: solid 1px; */
   width: 89px;
