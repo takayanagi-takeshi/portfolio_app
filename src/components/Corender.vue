@@ -61,7 +61,7 @@
           </option>
         </select>
         <span
-          ><button class="add-carender" @click="addItem(index)">
+          ><button class="add-carender" @click="addItem(inputName)">
             保 存
           </button></span
         >
