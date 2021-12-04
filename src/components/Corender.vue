@@ -61,9 +61,7 @@
           </option>
         </select>
         <span
-          ><button class="add-carender" @click="addItem(index)">
-            保 存
-          </button></span
+          ><button class="add-carender" @click="addItem()">保 存</button></span
         >
         <!-- <span><button class="add-carender1">削除</button></span> -->
       </div>
@@ -398,15 +396,13 @@ export default {
       // console.log(sTime)
     },
 
-    addItem: function (inputName) {
+    addItem: function () {
       // this.sample.push(this.sample);
       // this.sample.shift = '';
       // console.log();
       const days = this.now_year + "-" + this.now_month + "-" + this.inputDay;
-      const result = this.sample[inputName].shift.findIndex(
-        (d) => d.date === days
-      );
-      this.sample[inputName].shift[result].start_time = 99;
+      const result = this.sample[0].shift.findIndex((d) => d.date === days);
+      this.sample[0].shift[result].start_time = 99;
     },
 
     set() {
