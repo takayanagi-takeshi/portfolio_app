@@ -61,7 +61,7 @@
           </option>
         </select>
         <span
-          ><button class="add-carender" @click="addItem(inputName)">
+          ><button class="add-carender" @click="addItem(index)">
             保 存
           </button></span
         >
@@ -477,7 +477,7 @@ export default {
     },
     // ------------------------↑↑追加・削除ボタン---------------------------
 
-    // ----↓↓shiftデータの日付とカレンダーの日付を照合しあったものを取得----------------
+    // --↓↓shiftデータの日付とカレンダーの日付を照合しあったものを取得----------------
     requestUserData(id) {
       return this.sample.filter((data) => data.id === id);
     },
@@ -490,7 +490,7 @@ export default {
         String(day);
       return shift.filter((data) => data.date === d);
     },
-    // ----↑↑shiftデータの日付とカレンダーの日付を照合しあったものを取得-----------
+    // --↑↑shiftデータの日付とカレンダーの日付を照合しあったものを取得-----------
 
     // readUserDataShift(selected) {
     //   return this.sample.id(selected)
@@ -676,6 +676,6 @@ header {
 }
 
 .editbox {
-  margin-top: 4px;
+  margin-top: 3px;
 }
 </style>
