@@ -20,11 +20,8 @@
 
       <!--------------------------------------- ↓↓シフト入力機能 -------------------------------->
       <div>
-        <input
-          class="select-carender"
-          type="text"
-          v-model="inputMonth"
-        />月<input class="select-carender" type="text" v-model="inputDay" />日
+        <input class="select-carender" type="text" v-model="inputMonth" />月
+        <input class="select-carender" type="text" v-model="inputDay" />日
         <!-- <div v-model="inputName"> -->
         氏名<select class="select-carender1" v-model="inputName">
           <option
