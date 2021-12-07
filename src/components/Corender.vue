@@ -399,7 +399,7 @@ export default {
       // console.log();
       const days = this.now_year + "-" + this.now_month + "-" + this.inputDay;
       const result = this.sample[1].shift.findIndex((d) => d.date === days);
-      this.sample[1].shift[result].start_time = 99;
+      this.sample[1].shift[result].start_time = 123;
     },
 
     set() {
