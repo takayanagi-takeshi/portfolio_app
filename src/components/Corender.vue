@@ -232,6 +232,10 @@ export default {
           id: 5,
           selected: "",
         },
+        {
+          id: 6,
+          selected: "",
+        },
       ],
       // selectedFruits: '',
       // optionFruits: [
