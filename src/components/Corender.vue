@@ -232,10 +232,6 @@ export default {
           id: 5,
           selected: "",
         },
-        {
-          id: 6,
-          selected: "",
-        },
       ],
       // selectedFruits: '',
       // optionFruits: [
@@ -402,8 +398,8 @@ export default {
       // this.sample.shift = '';
       // console.log();
       const days = this.now_year + "-" + this.now_month + "-" + this.inputDay;
-      const result = this.sample[1].shift.findIndex((d) => d.date === days);
-      this.sample[1].shift[result].start_time = 123;
+      const result = this.sample[0].shift.findIndex((d) => d.date === days);
+      this.sample[0].shift[result].start_time = 123;
     },
 
     set() {
