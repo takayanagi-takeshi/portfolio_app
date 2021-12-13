@@ -58,7 +58,7 @@
           </option>
         </select>
         <span
-          ><button class="add-carender" @click="addItem(week.day)">
+          ><button class="add-carender" @click="addItem(week)">
             保 存
           </button></span
         >
