@@ -395,15 +395,13 @@ export default {
       // console.log(sTime)
     },
 
-    addItem: function (day, week) {
+    addItem: function () {
       // this.sample.push(this.sample);
       // this.sample.shift = '';
       // console.log();
       const days = this.now_year + "-" + this.now_month + "-" + this.inputDay;
-      const result = this.sample[(day, week)].shift.findIndex(
-        (d) => d.date === days
-      );
-      this.sample[(day, week)].shift[result].start_time = 123;
+      const result = this.sample[0].shift.findIndex((d) => d.date === days);
+      this.sample[0].shift[result].start_time = 123;
     },
 
     set() {
