@@ -58,9 +58,7 @@
           </option>
         </select>
         <span
-          ><button class="add-carender" @click="addItem(day)">
-            保 存
-          </button></span
+          ><button class="add-carender" @click="addItem()">保 存</button></span
         >
         <!-- <span><button class="add-carender1">削除</button></span> -->
       </div>
