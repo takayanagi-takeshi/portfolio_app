@@ -9,7 +9,7 @@
     <!--------------------------------------- ↓↓カレンダー機能 -------------------------------->
 
     <header>
-      <!--- 年・月を選択 ---->
+      <!--- 年・月を選択 ------>
       <div class="month">
         <button type="button" @click="monthMinus" class="border">⇦</button>
         <div class="now_year">{{ now_year }}年</div>
