@@ -526,7 +526,7 @@ header {
 }
 
 .calendar-week {
-  /* display: flex; */
+  /* display:  flex; */
   width: 400%;
   flex-wrap: wrap;
   text-align: center;
