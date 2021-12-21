@@ -32,7 +32,7 @@
     <input v-model="password" placeholder="パスワード" class="text2" >
   </div> -->
         <div class="main">
-          <a @click="SignIn">ログイン</a>
+          <!-- <a @click="SignIn">ログイン</a> -->
           <!-- <a @click="SignUp">新規登録</a> -->
 
           <button @click="SignInGoogle">Googleログイン</button>
