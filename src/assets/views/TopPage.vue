@@ -9,9 +9,9 @@
           <nav>
             <ul>
               <li>
-                <router-link to="/demotest" class="heder_txet"
+                <!-- <router-link to="/demotest" class="heder_txet"
                   >DemoTest</router-link
-                >
+                > -->
                 <!-- <router-link to="/apidata" class="heder_txet">API閲覧</router-link> -->
                 <!-- <a href="#" class="heder_txet">シフト希望</a> -->
                 <!-- <router-link to="/admin" class="heder_txet" >管理者(編集)</router-link> -->
