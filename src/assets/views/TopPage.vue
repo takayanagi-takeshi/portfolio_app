@@ -283,7 +283,7 @@ button {
 .main {
   padding: 30px;
   padding-top: 30px;
-  /* color:  #fff;               文字色 */
+  color: #fff; /* 文字色
   /* margin:  30px; 
   margin-bottom: 100px;             外側の余白 */
   font-size: 30px; /* 文字サイズ */
