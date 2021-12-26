@@ -258,7 +258,7 @@ li {
   .login-title2 {
     margin-left: 110px;
     position: absolute;
-    top: 391px;
+    top: 390px;
   }
 
   .text-input input {
