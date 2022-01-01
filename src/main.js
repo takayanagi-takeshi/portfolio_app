@@ -31,7 +31,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const auth = new getAuth();
-// -----------------           firebase   -----------------------------------------
+// -----------------         firebase   -----------------------------------------
 
 new Vue({
   router,
