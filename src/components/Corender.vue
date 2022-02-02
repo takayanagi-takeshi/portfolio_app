@@ -66,7 +66,7 @@
     </header>
 
     <div class="flexbox">
-      <!-- ----------------------------↓↓セレクトボックス表示 --------------------------->
+      <!------------------------------↓↓セレクトボックス表示 --------------------------->
       <div class="shift">
         <div class="shifts"></div>
         <div
@@ -245,22 +245,22 @@ export default {
           name: "創造さん",
           shift: [
             {
-              date: "2021-11-4",
+              date: "2022-1-4",
               start_time: 12,
               end_time: 20,
             },
             {
-              date: "2021-11-2",
+              date: "2022-1-2",
               start_time: 10,
               end_time: 12,
             },
             {
-              date: "2021-11-7",
+              date: "2022-1-7",
               start_time: 12,
               end_time: 13,
             },
             {
-              date: "2021-11-25",
+              date: "2022-1-25",
               start_time: 12,
               end_time: 13,
             },
@@ -271,17 +271,17 @@ export default {
           name: "リカレントさん",
           shift: [
             {
-              date: "2021-11-13",
+              date: "2022-1-13",
               start_time: 10,
               end_time: 18,
             },
             {
-              date: "2021-11-22",
+              date: "2022-1-22",
               start_time: 12,
               end_time: 21,
             },
             {
-              date: "2021-11-6",
+              date: "2022-1-6",
               start_time: 8,
               end_time: 12,
             },
@@ -292,17 +292,17 @@ export default {
           name: "qqqqqqqqさん",
           shift: [
             {
-              date: "2021-11-16",
+              date: "2022-1-16",
               start_time: 10,
               end_time: 18,
             },
             {
-              date: "2021-11-22",
+              date: "2022-1-22",
               start_time: 12,
               end_time: 21,
             },
             {
-              date: "2021-11-28",
+              date: "2022-1-28",
               start_time: 8,
               end_time: 12,
             },
